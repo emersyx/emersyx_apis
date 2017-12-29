@@ -1,5 +1,6 @@
 package emircapi
 
+// The constant values below must be used for the Command member of the Message struct.
 const(
     DISCONNECTED    = "DISCONNECTED"
     JOIN            = "JOIN"
