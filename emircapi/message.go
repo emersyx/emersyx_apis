@@ -21,6 +21,6 @@ type Message struct {
 }
 
 // This method returns the source of the event.
-func (m Message) GetSource() string {
+func (m Message) GetSourceIdentifier() string {
     return m.Source;
 }
