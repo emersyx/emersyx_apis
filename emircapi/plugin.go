@@ -5,24 +5,14 @@ import(
     "plugin"
 )
 
-// This function opens the go plugin at the specified path, calls the NewIRCOptions function exported by the plugin and
-// returns the same value returned by the exported function.
-func NewIRCOptions(path string) IRCOptions {
-    plug, err := plugin.Open(path)
-    if err != nil {
-        return nil, err
-    }
-    return NewIRCOptions(plug), nil
-}
-
 // This function calls the NewIRCOptions function exported by the specified plugin and returns the same value returned
 // by the exported function.
-func NewIRCOptions(plug *plugin.Plugin) IRCOptions {
+func NewIRCOptions(plug *plugin.Plugin) (IRCOptions, error) {
     if plug == nil {
         return nil, errors.New("Invalid plugin handle.")
     }
 
-    f, err := irc_plugin.Lookup("NewIRCOptions")
+    f, err := plug.Lookup("NewIRCOptions")
     if err != nil {
         return nil, errors.New("IRC plugin does not have the NewIRCOptions symbol.")
     }
@@ -32,18 +22,7 @@ func NewIRCOptions(plug *plugin.Plugin) IRCOptions {
         return nil, errors.New("The NewIRCOptions function does not have the correct signature.")
     }
 
-    bot := fc(options...)
-    return bot, nil
-}
-
-// This function opens the go plugin at the specified path, calls the NewIRCBot function exported by the plugin and
-// returns the same value returned by the exported function.
-func NewIRCBot(path string, options ...func (IRCBot) error) (IRCBot, error) {
-    plug, err := plugin.Open(path)
-    if err != nil {
-        return nil, err
-    }
-    return NewIRCBot(plug, options...), nil
+    return fc(), nil
 }
 
 // This function calls the NewIRCBot function exported by the specified plugin and returns the same value returned
@@ -53,7 +32,7 @@ func NewIRCBot(plug *plugin.Plugin, options ...func (IRCBot) error) (IRCBot, err
         return nil, errors.New("Invalid plugin handle.")
     }
 
-    f, err := irc_plugin.Lookup("NewIRCBot")
+    f, err := plug.Lookup("NewIRCBot")
     if err != nil {
         return nil, errors.New("IRC plugin does not have the NewIRCBot symbol.")
     }
@@ -63,6 +42,5 @@ func NewIRCBot(plug *plugin.Plugin, options ...func (IRCBot) error) (IRCBot, err
         return nil, errors.New("The NewIRCBot function does not have the correct signature.")
     }
 
-    bot := fc(options...)
-    return bot, nil
+    return fc(options...)
 }
