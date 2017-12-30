@@ -6,6 +6,7 @@ package emircapi
 // implementation must be directly usable as arguments to the NewIRCBot implementation.  Different IRCOptions
 // implementations may not be compatible with the same IRCBot implementation.
 type IRCOptions interface {
+    Identifier(id string)                           func(IRCBot) error;
     Nick(nick string)                               func(IRCBot) error;
     Ident(ident string)                             func(IRCBot) error;
     Name(name string)                               func(IRCBot) error;
