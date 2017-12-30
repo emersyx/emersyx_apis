@@ -21,7 +21,7 @@ type Update struct {
 }
 
 // This method returns the source of the event.
-func (u Update) GetSource() string {
+func (u Update) GetSourceIdentifier() string {
     return u.Source;
 }
 
