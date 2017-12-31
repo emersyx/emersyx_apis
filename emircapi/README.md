@@ -5,7 +5,7 @@
 The interfaces, structs and functions defined in these sources must be followed by IRC resource implementations. A
 complete go plugin needs to follow the rules below:
 
-* implement the `IRCBot` interface (defined in file `ircbot.go`)
+* implement the `IRCBot` interface (defined in file `ircif.go`)
 * implement the `IRCOptions` interface (defined in file `ircopt.go`)
 * export a function called `NewIRCBot` with the following signature
 ```
