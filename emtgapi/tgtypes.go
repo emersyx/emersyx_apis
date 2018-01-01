@@ -3,11 +3,8 @@ package emtgapi
 // The structs in this file have been automatically generated using the tgdocs2go tool. The tool is part of the emersyx
 // project and can be found at https://github.com/emersyx/tgdocs2go.
 
-// This is the basic structure for a Telegram update. This is the structure which implements the emcomapi.Event
-// interface for Telegram events within the emersyx platform. Official documentation at
-// https://core.telegram.org/bots/api#Update.
+// https://core.telegram.org/bots/api#update
 type Update struct {
-    Source                        string
     UpdateID                      int64               `json:"update_id"`
     Message                       *Message            `json:"message"`
     EditedMessage                 *Message            `json:"edited_message"`
@@ -18,11 +15,6 @@ type Update struct {
     CallbackQuery                 *CallbackQuery      `json:"callback_query"`
     ShippingQuery                 *ShippingQuery      `json:"shipping_query"`
     PreCheckoutQuery              *PreCheckoutQuery   `json:"pre_checkout_query"`
-}
-
-// This method returns the source of the event.
-func (u Update) GetSourceIdentifier() string {
-    return u.Source;
 }
 
 // https://core.telegram.org/bots/api#user
