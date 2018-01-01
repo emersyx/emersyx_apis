@@ -1,6 +1,6 @@
 package emtgapi
 
-type TgParams interface {
+type TelegramParameters interface {
     // Set the chat_id parameter. In the official documentation this parameter is of type Integer or String. If you wish
     // to use an Integer as parameter, then simply pass a go string object with the contents of the Integer.
     ChatID(value string) error
