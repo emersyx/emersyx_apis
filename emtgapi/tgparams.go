@@ -13,7 +13,7 @@ type TelegramParameters interface {
     // Set the disable_notification parameter.
     DisableNotification(value bool) error
     // Set the reply_to_message_id parameter.
-    ReplyToMessageID(value string) error
+    ReplyToMessageID(value int64) error
     // Set the reply_markup parameter. In the official documentation, this parameter is of type InlineKeyboardMarkup,
     // ReplyKeyboardMarkup, ReplyKeyboardRemove or ForceReply. Based on the documentation, the parameter is expected to
     // be JSON-serialized. This method takes a string as argument which should be a JSON string of the appropriate

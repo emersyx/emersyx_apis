@@ -6,5 +6,8 @@ package emtgapi
 // the TelegramOptions implementation must be directly usable as arguments to the NewTelegramBot implementation.
 // Different TelegramOptions implementations may not be compatible with the same TelegramBot implementation.
 type TelegramOptions interface {
-    APIToken(token string) func(TelegramBot) error;
+    APIToken(token string) func(TelegramBot) error
+    UpdatesLimit(limit uint) func(TelegramBot) error
+    UpdatesTimeout(seconds uint) func(TelegramBot) error
+    UpdatesAllowed(types ...string) func(TelegramBot) error
 }

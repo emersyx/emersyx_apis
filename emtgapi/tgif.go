@@ -8,12 +8,10 @@ import(
 type TelegramResource interface {
     // This method must call the getMe method from the Telegram Bot API. It must return the response formatted into a
     // User instance.
-    GetMe() User
-    // This method must call the sendMessage method from the Telegram Bot API. Based on the documentation, the
-    // destination field is either an integer or a string, but the chat_id argument to this method is of type string.
-    // For integer values, just use a string with the contents of the integer. The method must return the response
-    // formatted into a
-    SendMessage(params TelegramParameters) Message
+    GetMe() (User, error)
+    // This method must call the sendMessage method from the Telegram Bot API. The method must return the response
+    // formatted into a Message object.
+    SendMessage(params TelegramParameters) (Message, error)
 }
 
 // The TelegramBot interface specifies the methods that must be implemented by a complete Telegram receptor and
