@@ -21,6 +21,16 @@ func NewTelegramOptions() emtgapi.TelegramOptions
 The two functions `NewTelegramBot` and `NewTelegramOptions` are required by the wrapper functions with the same names
 (defined in file `plugin.go`).
 
+## Telegram Bot API methods
+
+This API tries to follow the names from the official documentation as much as possible. This makes it easy to explore
+the Bot API and this API.
+
+Setting parameters for the Bot API methods should be done using implementations of the `TelegramParameters` interface.
+Implementations of this interface should ensure that each method sets the appropriate parameter. Methods of the
+`TelegramReceptor` implementation (for Bot API methods that accept parameters) should accept one `TelegramParameters`
+object and use the appropriate parameter values.
+
 ## Using implementations
 
 Implementations of this API are to be distributed as either one go plugin file (e.g. one `.so` file for linux
