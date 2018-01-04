@@ -3,7 +3,8 @@ package emtgapi
 // The structs in this file have been automatically generated using the tgdocs2go tool. The tool is part of the emersyx
 // project and can be found at https://github.com/emersyx/tgdocs2go.
 
-// https://core.telegram.org/bots/api#update
+// Update type with fields compatible to the Telegram Bot API.
+// https://core.telegram.org/bots/api#Update
 type Update struct {
     UpdateID                      int64               `json:"update_id"`
     Message                       *Message            `json:"message"`
@@ -17,7 +18,8 @@ type Update struct {
     PreCheckoutQuery              *PreCheckoutQuery   `json:"pre_checkout_query"`
 }
 
-// https://core.telegram.org/bots/api#user
+// User type with fields compatible to the Telegram Bot API.
+// https://core.telegram.org/bots/api#User
 type User struct {
     ID                            int64               `json:"id"`
     IsBot                         bool                `json:"is_bot"`
@@ -27,7 +29,8 @@ type User struct {
     LanguageCode                  string              `json:"language_code"`
 }
 
-// https://core.telegram.org/bots/api#chat
+// Chat type with fields compatible to the Telegram Bot API.
+// https://core.telegram.org/bots/api#Chat
 type Chat struct {
     ID                            int64               `json:"id"`
     Type                          string              `json:"type"`
@@ -41,6 +44,7 @@ type Chat struct {
     InviteLink                    string              `json:"invite_link"`
 }
 
+// Message type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#message
 type Message struct {
     MessageID                     int64               `json:"message_id"`
@@ -83,15 +87,17 @@ type Message struct {
     SuccessfulPayment             *SuccessfulPayment  `json:"successful_payment"`
 }
 
+// MessageEntity type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#MessageEntity
 type MessageEntity struct {
     Type                          string              `json:"type"`
     Offset                        int64               `json:"offset"`
     Length                        int64               `json:"length"`
-    Url                           string              `json:"url"`
+    URL                           string              `json:"url"`
     User                          *User               `json:"user"`
 }
 
+// PhotoSize type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#PhotoSize
 type PhotoSize struct {
     FileID                        string              `json:"file_id"`
@@ -100,6 +106,7 @@ type PhotoSize struct {
     FileSize                      int64               `json:"file_size"`
 }
 
+// Audio type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Audio
 type Audio struct {
     FileID                        string              `json:"file_id"`
@@ -110,6 +117,7 @@ type Audio struct {
     FileSize                      int64               `json:"file_size"`
 }
 
+// Document type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Document
 type Document struct {
     FileID                        string              `json:"file_id"`
@@ -119,6 +127,7 @@ type Document struct {
     FileSize                      int64               `json:"file_size"`
 }
 
+// Video type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Video
 type Video struct {
     FileID                        string              `json:"file_id"`
@@ -130,6 +139,7 @@ type Video struct {
     FileSize                      int64               `json:"file_size"`
 }
 
+// Voice type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Voice
 type Voice struct {
     FileID                        string              `json:"file_id"`
@@ -138,6 +148,7 @@ type Voice struct {
     FileSize                      int64               `json:"file_size"`
 }
 
+// VideoNote type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#VideoNote
 type VideoNote struct {
     FileID                        string              `json:"file_id"`
@@ -147,6 +158,7 @@ type VideoNote struct {
     FileSize                      int64               `json:"file_size"`
 }
 
+// Contact type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Contact
 type Contact struct {
     PhoneNumber                   string              `json:"phone_number"`
@@ -155,12 +167,14 @@ type Contact struct {
     UserID                        int64               `json:"user_id"`
 }
 
+// Location type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Location
 type Location struct {
     Longitude                     *float64            `json:"longitude"`
     Latitude                      *float64            `json:"latitude"`
 }
 
+// Venue type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Venue
 type Venue struct {
     Location                      *Location           `json:"location"`
@@ -169,12 +183,14 @@ type Venue struct {
     FoursquareID                  string              `json:"foursquare_id"`
 }
 
+// UserProfilePhotos type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#UserProfilePhotos
 type UserProfilePhotos struct {
     TotalCount                    int64               `json:"total_count"`
     Photos                        *[][]PhotoSize      `json:"photos"`
 }
 
+// File type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#File
 type File struct {
     FileID                        string              `json:"file_id"`
@@ -182,6 +198,7 @@ type File struct {
     FilePath                      string              `json:"file_path"`
 }
 
+// ReplyKeyboardMarkup type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#ReplyKeyboardMarkup
 type ReplyKeyboardMarkup struct {
     Keyboard                      *[][]KeyboardButton `json:"keyboard"`
@@ -190,6 +207,7 @@ type ReplyKeyboardMarkup struct {
     Selective                     bool                `json:"selective"`
 }
 
+// KeyboardButton type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#KeyboardButton
 type KeyboardButton struct {
     Text                          string              `json:"text"`
@@ -197,17 +215,20 @@ type KeyboardButton struct {
     RequestLocation               bool                `json:"request_location"`
 }
 
+// ReplyKeyboardRemove type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#ReplyKeyboardRemove
 type ReplyKeyboardRemove struct {
     RemoveKeyboard                bool                `json:"remove_keyboard"`
     Selective                     bool                `json:"selective"`
 }
 
+// InlineKeyboardMarkup type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#InlineKeyboardMarkup
 type InlineKeyboardMarkup struct {
     InlineKeyboard                *[][]InlineKeyboardButton`json:"inline_keyboard"`
 }
 
+// CallbackQuery type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#CallbackQuery
 type CallbackQuery struct {
     ID                            string              `json:"id"`
@@ -219,18 +240,21 @@ type CallbackQuery struct {
     GameShortName                 string              `json:"game_short_name"`
 }
 
+// ForceReply type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#ForceReply
 type ForceReply struct {
     ForceReply                    bool                `json:"force_reply"`
     Selective                     bool                `json:"selective"`
 }
 
+// ChatPhoto type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#ChatPhoto
 type ChatPhoto struct {
     SmallFileID                   string              `json:"small_file_id"`
     BigFileID                     string              `json:"big_file_id"`
 }
 
+// ChatMember type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#ChatMember
 type ChatMember struct {
     User                          *User               `json:"user"`
@@ -251,12 +275,14 @@ type ChatMember struct {
     CanAddWebPagePreviews         bool                `json:"can_add_web_page_previews"`
 }
 
+// ResponseParameters type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#ResponseParameters
 type ResponseParameters struct {
     MigrateToChatID               int64               `json:"migrate_to_chat_id"`
     RetryAfter                    int64               `json:"retry_after"`
 }
 
+// Game type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Game
 type Game struct {
     Title                         string              `json:"title"`
@@ -267,6 +293,7 @@ type Game struct {
     Animation                     *Animation          `json:"animation"`
 }
 
+// Animation type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Animation
 type Animation struct {
     FileID                        string              `json:"file_id"`
@@ -276,6 +303,7 @@ type Animation struct {
     FileSize                      int64               `json:"file_size"`
 }
 
+// Sticker type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Sticker
 type Sticker struct {
     FileID                        string              `json:"file_id"`
@@ -288,6 +316,7 @@ type Sticker struct {
     FileSize                      int64               `json:"file_size"`
 }
 
+// MaskPosition type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#MaskPosition
 type MaskPosition struct {
     Point                         string              `json:"point"`
@@ -296,6 +325,7 @@ type MaskPosition struct {
     Scale                         float64             `json:"scale"`
 }
 
+// Invoice type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#Invoice
 type Invoice struct {
     Title                         string              `json:"title"`
@@ -305,6 +335,7 @@ type Invoice struct {
     TotalAmount                   int64               `json:"total_amount"`
 }
 
+// SuccessfulPayment type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#SuccessfulPayment
 type SuccessfulPayment struct {
     Currency                      string              `json:"currency"`
@@ -316,6 +347,7 @@ type SuccessfulPayment struct {
     ProviderPaymentChargeID       string              `json:"provider_payment_charge_id"`
 }
 
+// OrderInfo type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#OrderInfo
 type OrderInfo struct {
     Name                          string              `json:"name"`
@@ -324,6 +356,7 @@ type OrderInfo struct {
     ShippingAddress               *ShippingAddress    `json:"shipping_address"`
 }
 
+// ShippingAddress type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#ShippingAddress
 type ShippingAddress struct {
     CountryCode                   string              `json:"country_code"`
@@ -334,10 +367,11 @@ type ShippingAddress struct {
     PostCode                      string              `json:"post_code"`
 }
 
+// InlineKeyboardButton type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#InlineKeyboardButton
 type InlineKeyboardButton struct {
     Text                          string              `json:"text"`
-    Url                           string              `json:"url"`
+    URL                           string              `json:"url"`
     CallbackData                  string              `json:"callback_data"`
     SwitchInlineQuery             string              `json:"switch_inline_query"`
     SwitchInlineQueryCurrentChat  string              `json:"switch_inline_query_current_chat"`
@@ -345,6 +379,7 @@ type InlineKeyboardButton struct {
     Pay                           bool                `json:"pay"`
 }
 
+// CallbackGame type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#CallbackGame
 type CallbackGame struct {
     UserID                        int64               `json:"user_id"`
@@ -356,6 +391,7 @@ type CallbackGame struct {
     InlineMessageID               string              `json:"inline_message_id"`
 }
 
+// InlineQuery type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#InlineQuery
 type InlineQuery struct {
     ID                            string              `json:"id"`
@@ -365,6 +401,7 @@ type InlineQuery struct {
     Offset                        string              `json:"offset"`
 }
 
+// ChosenInlineResult type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#ChosenInlineResult
 type ChosenInlineResult struct {
     ResultID                      string              `json:"result_id"`
@@ -374,6 +411,7 @@ type ChosenInlineResult struct {
     Query                         string              `json:"query"`
 }
 
+// ShippingQuery type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#ShippingQuery
 type ShippingQuery struct {
     ID                            string              `json:"id"`
@@ -382,6 +420,7 @@ type ShippingQuery struct {
     ShippingAddress               *ShippingAddress    `json:"shipping_address"`
 }
 
+// PreCheckoutQuery type with fields compatible to the Telegram Bot API.
 // https://core.telegram.org/bots/api#PreCheckoutQuery
 type PreCheckoutQuery struct {
     ID                            string              `json:"id"`
