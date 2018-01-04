@@ -9,7 +9,7 @@ const(
     QUIT            = "QUIT"
 )
 
-// This is the basic structure for an IRC message received by the client when an event occurs. Names of the struct
+// Message is the basic structure for an IRC message received by the client when an event occurs. Names of the struct
 // members have been taken from RFC-1459 and RFC-2812. This is the structure which implements the emcomapi.Event
 // interface for IRC events.
 type Message struct {
@@ -20,7 +20,7 @@ type Message struct {
     Parameters  []string
 }
 
-// This method returns the source of the event.
+// GetSourceIdentifier returns the identifier of the IRCReceptor instance which generated the emersyx event.
 func (m Message) GetSourceIdentifier() string {
     return m.Source;
 }
