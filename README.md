@@ -5,3 +5,23 @@ APIs and interface specifications for emersyx modules. The following go modules 
 * `emcomapi` - common APIs for platform components (e.g. messages and receptors)
 * `emircapi` - APIs defining the common interface for an IRC resource and the IRC event type
 * `emtgapi` - APIs defining the common interface for a Telegram resource and the Telegram event types
+
+## TODO
+
+The following websites/services/APIs are on my TODO list to add support for:
+
+* [VirusTotal Public API v2.0][1] as described in the [official documentation][2]
+* [Reddit API][3]
+* [GMail API][4], though probably based on the [go library][5]
+* [Slack Bot Users][6]
+* [Discord API][7]
+* [Github API][8]
+
+[1]: https://www.virustotal.com/en/documentation/public-api/
+[2]: https://developers.virustotal.com/v2.0/reference
+[3]: https://www.reddit.com/dev/api/
+[4]: https://developers.google.com/gmail/api/
+[5]: https://developers.google.com/gmail/api/quickstart/go
+[6]: https://api.slack.com/bot-users
+[7]: https://discordapp.com/developers
+[8]: https://developer.github.com/v3/
