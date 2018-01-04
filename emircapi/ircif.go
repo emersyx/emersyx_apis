@@ -8,7 +8,7 @@ import (
 type IRCResource interface {
 	// Connect must start the connection process to the selected IRC server. This must be a blocking method. When the
 	// method returns, the IRCResource must connected to the IRC server if the return value is nil. Otherwise, it is
-	// considered that an error occured and the connection was not possible.
+	// considered that an error occurred and the connection was not possible.
 	Connect() error
 	// IsConnected must return a boolean which is true if the bot is connected to the server, and false otherwise.
 	IsConnected() bool
