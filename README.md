@@ -1,4 +1,4 @@
-# emersyx_apis [![Build Status](https://travis-ci.org/emersyx/emersyx_apis.svg?branch=master)](https://travis-ci.org/emersyx/emersyx_apis)
+# emersyx_apis [![Build Status][build-img]][build-url] [![Go Report Card][gorep-img]][gorep-url]
 
 APIs and interface specifications for emersyx modules. The following go modules are present:
 
@@ -17,6 +17,10 @@ The following websites/services/APIs are on my TODO list to add support for:
 * [Discord API][7]
 * [Github API][8]
 
+[build-img]: https://travis-ci.org/emersyx/emersyx_apis.svg?branch=master
+[build-url]: https://travis-ci.org/emersyx/emersyx_apis
+[gorep-img]: https://goreportcard.com/badge/github.com/emersyx/emersyx_apis
+[gorep-url]: https://goreportcard.com/report/github.com/emersyx/emersyx_apis
 [1]: https://www.virustotal.com/en/documentation/public-api/
 [2]: https://developers.virustotal.com/v2.0/reference
 [3]: https://www.reddit.com/dev/api/
