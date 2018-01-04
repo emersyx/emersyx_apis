@@ -5,5 +5,5 @@ package emcomapi
 // or emtgapi.Update), then they can use that particular type directly.
 type Event interface {
 	// GetSourceIdentifier must return the identifier of the emersyx receptor which generated the event.
-    GetSourceIdentifier() string
+	GetSourceIdentifier() string
 }
