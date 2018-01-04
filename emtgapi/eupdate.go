@@ -5,11 +5,11 @@ package emtgapi
 // standard types follow the official documentation. As such, the mandatory source field and GetSourceIdentifier method
 // are declared for the EUpdate type.
 type EUpdate struct {
-    Update
-    Source string
+	Update
+	Source string
 }
 
 // GetSourceIdentifier returns the identifier of the TelegramReceptor instance which generated the emersyx event.
 func (u EUpdate) GetSourceIdentifier() string {
-    return u.Source;
+	return u.Source
 }
