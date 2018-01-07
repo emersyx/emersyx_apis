@@ -4,8 +4,9 @@ import (
 	"emersyx.net/emersyx_apis/emcomapi"
 )
 
-// IRCResource is the interface which specifies the methods that must be implemented by any supported IRC resource.
-type IRCResource interface {
+// IRCReceptor is the interface which specifies the methods that must be implemented by any supported IRC receptor.
+type IRCReceptor interface {
+	emcomapi.Receptor
 	// Connect must start the connection process to the selected IRC server. This must be a blocking method. When the
 	// method returns, the IRCResource must connected to the IRC server if the return value is nil. Otherwise, it is
 	// considered that an error occurred and the connection was not possible.
@@ -15,6 +16,11 @@ type IRCResource interface {
 	// Quit must disconnect the IRCResource from the IRC server. This must be a blocking method. When the method
 	// returns, the instance must not be connected to the IRC server anymore.
 	Quit() error
+}
+
+// IRCResource is the interface which specifies the methods that must be implemented by any supported IRC resource.
+// These methods have to be implemented by an IRCReceptor type in order to become an IRCBot type.
+type IRCResource interface {
 	// Join method must send a JOIN command to the IRC server. The argument specifies the channel to be joined. If the
 	// instance is not connected to any IRC server, then an error is returned.
 	Join(channel string) error
@@ -27,6 +33,6 @@ type IRCResource interface {
 // IRCBot is the interface which specifies the methods that must be implemented by a complete IRC receptor and resource.
 // The reference implementation at https://github.com/emersyx/emersyx_irc follows this interface.
 type IRCBot interface {
-	emcomapi.Receptor
+	IRCReceptor
 	IRCResource
 }
