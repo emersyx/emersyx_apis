@@ -25,21 +25,21 @@ func NewIRCOptions(plug *plugin.Plugin) (IRCOptions, error) {
 	return fc(), nil
 }
 
-// NewIRCBot calls the function with the same name exported by the specified plugin and returns the same value returned
-// by the exported function.
-func NewIRCBot(plug *plugin.Plugin, options ...func(IRCBot) error) (IRCBot, error) {
+// NewIRCGateway calls the function with the same name exported by the specified plugin and returns the same value
+// returned by the exported function.
+func NewIRCGateway(plug *plugin.Plugin, options ...func(IRCGateway) error) (IRCGateway, error) {
 	if plug == nil {
 		return nil, errors.New("invalid plugin handle")
 	}
 
-	f, err := plug.Lookup("NewIRCBot")
+	f, err := plug.Lookup("NewIRCGateway")
 	if err != nil {
-		return nil, errors.New("the IRC plugin does not have the NewIRCBot symbol")
+		return nil, errors.New("the IRC plugin does not have the NewIRCGateway symbol")
 	}
 
-	fc, ok := f.(func(options ...func(IRCBot) error) (IRCBot, error))
+	fc, ok := f.(func(options ...func(IRCGateway) error) (IRCGateway, error))
 	if ok == false {
-		return nil, errors.New("the NewIRCBot function does not have the correct signature")
+		return nil, errors.New("the NewIRCGateway function does not have the correct signature")
 	}
 
 	return fc(options...)
