@@ -14,7 +14,7 @@ func NewIRCOptions(plug *plugin.Plugin) (IRCOptions, error) {
 
 	f, err := plug.Lookup("NewIRCOptions")
 	if err != nil {
-		return nil, errors.New("IRC plugin does not have the NewIRCOptions symbol")
+		return nil, errors.New("the IRC plugin does not have the NewIRCOptions symbol")
 	}
 
 	fc, ok := f.(func() IRCOptions)
@@ -34,7 +34,7 @@ func NewIRCBot(plug *plugin.Plugin, options ...func(IRCBot) error) (IRCBot, erro
 
 	f, err := plug.Lookup("NewIRCBot")
 	if err != nil {
-		return nil, errors.New("IRC plugin does not have the NewIRCBot symbol")
+		return nil, errors.New("the IRC plugin does not have the NewIRCBot symbol")
 	}
 
 	fc, ok := f.(func(options ...func(IRCBot) error) (IRCBot, error))
