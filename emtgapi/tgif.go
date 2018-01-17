@@ -14,9 +14,9 @@ type TelegramResource interface {
 	SendMessage(params TelegramParameters) (Message, error)
 }
 
-// The TelegramBot interface specifies the methods that must be implemented by a complete Telegram receptor and
+// The TelegramGateway interface specifies the methods that must be implemented by a complete Telegram receptor and
 // resource. The reference implementation at https://github.com/emersyx/emersyx_telegram follows this interface.
-type TelegramBot interface {
+type TelegramGateway interface {
 	emcomapi.Receptor
 	TelegramResource
 }

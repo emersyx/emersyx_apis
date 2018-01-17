@@ -25,21 +25,21 @@ func NewTelegramOptions(plug *plugin.Plugin) (TelegramOptions, error) {
 	return fc(), nil
 }
 
-// NewTelegramBot calls the function with the same name exported by the specified plugin and returns the same value
+// NewTelegramGateway calls the function with the same name exported by the specified plugin and returns the same value
 // returned by the exported function.
-func NewTelegramBot(plug *plugin.Plugin, options ...func(TelegramBot) error) (TelegramBot, error) {
+func NewTelegramGateway(plug *plugin.Plugin, options ...func(TelegramGateway) error) (TelegramGateway, error) {
 	if plug == nil {
 		return nil, errors.New("invalid plugin handle")
 	}
 
-	f, err := plug.Lookup("NewTelegramBot")
+	f, err := plug.Lookup("NewTelegramGateway")
 	if err != nil {
-		return nil, errors.New("the Telegram plugin does not have the NewTelegramBot symbol")
+		return nil, errors.New("the Telegram plugin does not have the NewTelegramGateway symbol")
 	}
 
-	fc, ok := f.(func(options ...func(TelegramBot) error) (TelegramBot, error))
+	fc, ok := f.(func(options ...func(TelegramGateway) error) (TelegramGateway, error))
 	if ok == false {
-		return nil, errors.New("the NewTelegramBot function does not have the correct signature")
+		return nil, errors.New("the NewTelegramGateway function does not have the correct signature")
 	}
 
 	return fc(options...)
