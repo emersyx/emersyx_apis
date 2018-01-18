@@ -17,6 +17,7 @@ type TelegramResource interface {
 // The TelegramGateway interface specifies the methods that must be implemented by a complete Telegram receptor and
 // resource. The reference implementation at https://github.com/emersyx/emersyx_telegram follows this interface.
 type TelegramGateway interface {
+	emcomapi.Identifiable
 	emcomapi.Receptor
 	TelegramResource
 }

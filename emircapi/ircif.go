@@ -33,6 +33,7 @@ type IRCResource interface {
 // IRCGateway is the interface which specifies the methods that must be implemented by a complete IRC receptor and resource.
 // The reference implementation at https://github.com/emersyx/emersyx_irc follows this interface.
 type IRCGateway interface {
+	emcomapi.Identifiable
 	IRCReceptor
 	IRCResource
 }
