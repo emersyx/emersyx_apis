@@ -9,8 +9,8 @@ type Event interface {
 }
 
 // Identifiable is a low-level interface (w.r.t. hierarchy of types in the emersyx framework) for all components which
-// have to be uniquely identifiable. This includes resources, receptors, gateways (i.e. components which are
-// simultaneously resources and receptors) and processors.
+// have to be uniquely identifiable. This includes gateways (components which are either resources, receptors or both
+// simultaneously) and processors.
 type Identifiable interface {
 	// GetIdentifier must return the identifier of the component.
 	GetIdentifier() string
