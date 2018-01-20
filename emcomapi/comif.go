@@ -22,3 +22,12 @@ type Receptor interface {
 	// GetEventsChannel must return the channel via which the Receptor implementation pushes Event objects.
 	GetEventsChannel() chan Event
 }
+
+// Processor is the interface for all event processors part of the emersyx platform. Each processor component must
+// implement the Identifiable interface and implement a method via which new Event objects are received for processing.
+type Processor {
+	Identifiable
+	// ProcessEvent must process the Event object it receives. The function can be blocking. The emersyx event router is
+	// supposed to call this method withing a goroutine.
+	ProcessEvent(ev Event) error
+}
