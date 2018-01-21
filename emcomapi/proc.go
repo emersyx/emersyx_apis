@@ -20,7 +20,7 @@ type Processor interface {
 
 // NewProcessor calls the function with the same name exported by the specified plugin and returns the same value
 // returned by the exported function.
-func NewProcessor(plug *plugin.Plugin, cfg string) (Processor, error) {
+func NewProcessor(plug *plugin.Plugin, id string, cfg string) (Processor, error) {
 	if plug == nil {
 		return nil, errors.New("invalid plugin handle")
 	}
@@ -30,10 +30,10 @@ func NewProcessor(plug *plugin.Plugin, cfg string) (Processor, error) {
 		return nil, errors.New("the processor plugin does not have the NewProcessor symbol")
 	}
 
-	fc, ok := f.(func(cfg string) (Processor, error))
+	fc, ok := f.(func(id string, cfg string) (Processor, error))
 	if ok == false {
 		return nil, errors.New("the NewProcessor function does not have the correct signature")
 	}
 
-	return fc(cfg)
+	return fc(id, cfg)
 }
