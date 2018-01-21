@@ -29,7 +29,7 @@ type Router interface {
 
 // NewRouter calls the function with the same name exported by the specified plugin and returns the same value returned
 // by the exported function.
-func NewRouter(plug *plugin.Plugin, cfg string) (Router, error) {
+func NewRouter(plug *plugin.Plugin) (Router, error) {
 	if plug == nil {
 		return nil, errors.New("invalid plugin handle")
 	}
@@ -39,10 +39,10 @@ func NewRouter(plug *plugin.Plugin, cfg string) (Router, error) {
 		return nil, errors.New("the router plugin does not have the NewRouter symbol")
 	}
 
-	fc, ok := f.(func(cfg string) (Router, error))
+	fc, ok := f.(func() (Router, error))
 	if ok == false {
 		return nil, errors.New("the NewRouter function does not have the correct signature")
 	}
 
-	return fc(cfg)
+	return fc()
 }
