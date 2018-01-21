@@ -1,4 +1,4 @@
-package emrtr
+package emrtrapi
 
 import (
 	"emersyx.net/emersyx_apis/emcomapi"
