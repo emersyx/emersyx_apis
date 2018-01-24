@@ -4,7 +4,7 @@ package emtgapi
 // returns a function, which can apply the appropriate configuration to the TelegramGateway implementation. Each
 // TelegramGateway implementation needs to also provide a related TelegramOptions implementation. The return values of
 // each method of the TelegramOptions implementation must be directly usable as arguments to the NewTelegramGateway
-// implementation.  Different TelegramOptions implementations may not be compatible with the same TelegramGateway
+// implementation. Different TelegramOptions implementations may not be compatible with the same TelegramGateway
 // implementation.
 type TelegramOptions interface {
 	Identifier(id string) func(TelegramGateway) error
