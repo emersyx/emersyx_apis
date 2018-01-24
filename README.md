@@ -4,8 +4,8 @@ APIs and interface specifications for emersyx modules. The following go modules 
 
 * `emcomapi` - common APIs for platform components (e.g. messages and receptors)
 * `emircapi` - APIs defining the common interface for an IRC gateway and the IRC event type
-* `emtgapi` - APIs defining the common interface for a Telegram gateway and the Telegram event types
 * `emrtrapi` - APIs defining the common interface for an event Router
+* `emtgapi` - APIs defining the common interface for a Telegram gateway and the Telegram event types
 
 ## TODO
 
