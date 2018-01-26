@@ -9,10 +9,9 @@ import (
 // implement the Identifiable interface and implement a method via which new Event objects are received for processing.
 type Processor interface {
 	Identifiable
-	// ProcessEvent must process the Event object it receives. The function can be blocking. The emersyx event router is
-	// supposed to call this method withing a goroutine. If the event cannot be processed succesfully, an error must be
-	// returned.
-	ProcessEvent(ev Event) error
+	// GetEventsChannel must return the channel via which the Processor implementation receives Event objects. The
+	// channel is write-only and must never be read from.
+	GetEventsChannel() chan Event
 	// LoadConfig must load a configuration file for the specific Processor implementation. If the configuration file
 	// cannot be loaded, an error must be returned.
 	LoadConfig(path string) error
