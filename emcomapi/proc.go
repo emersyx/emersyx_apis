@@ -9,9 +9,12 @@ import (
 // implement the Identifiable interface and implement a method via which new Event objects are received for processing.
 type Processor interface {
 	Identifiable
-	// GetEventsChannel must return the channel via which the Processor implementation receives Event objects. The
+	// GetInEventsChannel must return the channel via which the Processor implementation receives Event objects. The
 	// channel is write-only and must never be read from.
-	GetEventsChannel() chan Event
+	GetInEventsChannel() chan Event
+	// GetOutEventsChannel must return the channel via which the Processor implementation pushes Event objects. The
+	// channel is read-only and must never be written to.
+	GetOutEventsChannel() chan Event
 	// LoadConfig must load a configuration file for the specific Processor implementation. If the configuration file
 	// cannot be loaded, an error must be returned.
 	LoadConfig(path string) error
