@@ -19,6 +19,7 @@ type Identifiable interface {
 // Receptor is the interface for all event receptors part of the emersyx platform. Each receptor component must expose
 // a channel via which events are pushed.
 type Receptor interface {
-	// GetEventsChannel must return the channel via which the Receptor implementation pushes Event objects.
+	// GetEventsChannel must return the channel via which the Receptor implementation pushes Event objects. The channel
+	// is read-only and must never be written to.
 	GetEventsChannel() chan Event
 }
