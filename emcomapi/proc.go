@@ -10,11 +10,11 @@ import (
 type Processor interface {
 	Identifiable
 	// GetInEventsChannel must return the channel via which the Processor implementation receives Event objects. The
-	// channel is write-only and must never be read from.
-	GetInEventsChannel() chan Event
+	// channel is write-only and can not be read from.
+	GetInEventsChannel() chan<- Event
 	// GetOutEventsChannel must return the channel via which the Processor implementation pushes Event objects. The
-	// channel is read-only and must never be written to.
-	GetOutEventsChannel() chan Event
+	// channel is read-only and can not be written to.
+	GetOutEventsChannel() <-chan Event
 	// LoadConfig must load a configuration file for the specific Processor implementation. If the configuration file
 	// cannot be loaded, an error must be returned.
 	LoadConfig(path string) error

@@ -20,6 +20,6 @@ type Identifiable interface {
 // a channel via which events are pushed.
 type Receptor interface {
 	// GetEventsChannel must return the channel via which the Receptor implementation pushes Event objects. The channel
-	// is read-only and must never be written to.
-	GetEventsChannel() chan Event
+	// is read-only and can not be written to.
+	GetEventsChannel() <-chan Event
 }
