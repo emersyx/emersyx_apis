@@ -48,6 +48,17 @@ type Router interface {
 	Run() error
 }
 
+// The ProcessorOptions interface specifies the options which can be set on a Processor implementation. Each method
+// returns a function, which can apply the appropriate configuration to the Processor implementation. Each Processor
+// implementation needs to also provide a related ProcessorOptions implementation. The return values of each method of
+// the ProcessorOptions implementation must be directly usable as arguments to the NewProcessor implementation.
+// Different ProcessorOptions implementations may not be compatible with the same Processor implementation.
+type ProcessorOptions interface {
+	Identifier(id string) func(Processor) error
+	Config(cfg string) func(Processor) error
+	Router(rtr Router) func(Processor) error
+}
+
 // Processor is the interface for all event processors part of the emersyx platform. Each processor component must
 // implement the Identifiable interface and implement a method via which new Event objects are received for processing.
 type Processor interface {
