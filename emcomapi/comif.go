@@ -23,3 +23,42 @@ type Receptor interface {
 	// is read-only and can not be written to.
 	GetEventsChannel() <-chan Event
 }
+
+// The RouterOptions interface specifies the options which can be set on a Router implementation. Each method returns a
+// function, which can apply the appropriate configuration to the Router implementation. Each Router implementation
+// needs to also provide a related RouterOptions implementation. The return values of each method of the RouterOptions
+// implementation must be directly usable as arguments to the NewRouter implementation. Different RouterOptions
+// implementations may not be compatible with the same Router implementation.
+type RouterOptions interface {
+	Gateways(gws ...Identifiable) func(Router) error
+	Processors(procs ...Processor) func(Router) error
+	Routes(routes map[string][]string) func(Router) error
+}
+
+// Router is the interface which must be implemented by all emersyx routers. The standard router implementation follows
+// this interface. The emersyx core also expects implementations to follow it.
+type Router interface {
+	// GetGateway must search for the Identifiable object loaded with the Gateways option and with the specified
+	// identifier. If such an object is found, then it must be returned.
+	GetGateway(id string) (Identifiable, error)
+	// Run must start a loop in which events coming from 1a) the Identifiable objects 2a) loaded via the Gateways option
+	// and 3a) which also implement the Receptor interface are routed to 1b) the Processor objects 2b) loaded via the
+	// Processors option. The events should follow the routes specified via the Routes option. The mentioned options
+	// refer to the ones in the emrtrapi.RouterOptions interface.
+	Run() error
+}
+
+// Processor is the interface for all event processors part of the emersyx platform. Each processor component must
+// implement the Identifiable interface and implement a method via which new Event objects are received for processing.
+type Processor interface {
+	Identifiable
+	// GetInEventsChannel must return the channel via which the Processor implementation receives Event objects. The
+	// channel is write-only and can not be read from.
+	GetInEventsChannel() chan<- Event
+	// GetOutEventsChannel must return the channel via which the Processor implementation pushes Event objects. The
+	// channel is read-only and can not be written to.
+	GetOutEventsChannel() <-chan Event
+	// LoadConfig must load a configuration file for the specific Processor implementation. If the configuration file
+	// cannot be loaded, an error must be returned.
+	LoadConfig(path string) error
+}
