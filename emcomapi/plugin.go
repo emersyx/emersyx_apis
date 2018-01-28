@@ -45,6 +45,26 @@ func NewRouter(plug *plugin.Plugin, options ...func(Router) error) (Router, erro
 	return fc(options...)
 }
 
+// NewProcessorOptions calls the function with the same name exported by the specified plugin and returns the same value
+// returned by the exported function.
+func NewProcessorOptions(plug *plugin.Plugin) (ProcessorOptions, error) {
+	if plug == nil {
+		return nil, errors.New("invalid plugin handle")
+	}
+
+	f, err := plug.Lookup("NewProcessorOptions")
+	if err != nil {
+		return nil, errors.New("the processor plugin does not have the NewProcessorOptions symbol")
+	}
+
+	fc, ok := f.(func() (ProcessorOptions, error))
+	if ok == false {
+		return nil, errors.New("the NewProcessorOptions function does not have the correct signature")
+	}
+
+	return fc()
+}
+
 // NewProcessor calls the function with the same name exported by the specified plugin and returns the same value
 // returned by the exported function.
 func NewProcessor(plug *plugin.Plugin, options ...func(Processor) error) (Processor, error) {
