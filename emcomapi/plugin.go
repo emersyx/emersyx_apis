@@ -27,7 +27,7 @@ func NewRouterOptions(plug *plugin.Plugin) (RouterOptions, error) {
 
 // NewRouter calls the function with the same name exported by the specified plugin and returns the same value returned
 // by the exported function.
-func NewRouter(plug *plugin.Plugin, options ...func(Router) error) (Router, error) {
+func NewRouter(plug *plugin.Plugin) (Router, error) {
 	if plug == nil {
 		return nil, errors.New("invalid plugin handle")
 	}
@@ -37,12 +37,12 @@ func NewRouter(plug *plugin.Plugin, options ...func(Router) error) (Router, erro
 		return nil, errors.New("the router plugin does not have the NewRouter symbol")
 	}
 
-	fc, ok := f.(func(optiosn ...func(Router) error) (Router, error))
+	fc, ok := f.(func() (Router, error))
 	if ok == false {
 		return nil, errors.New("the NewRouter function does not have the correct signature")
 	}
 
-	return fc(options...)
+	return fc()
 }
 
 // NewProcessorOptions calls the function with the same name exported by the specified plugin and returns the same value
