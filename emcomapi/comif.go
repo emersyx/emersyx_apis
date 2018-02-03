@@ -46,7 +46,7 @@ type Router interface {
 	// Run must start a loop in which events coming from 1a) the Identifiable objects 2a) loaded via the Gateways option
 	// and 3a) which also implement the Receptor interface are routed to 1b) the Processor objects 2b) loaded via the
 	// Processors option. The events should follow the routes specified via the Routes option. The mentioned options
-	// refer to the ones in the emrtrapi.RouterOptions interface.
+	// refer to the ones in the emcomapi.RouterOptions interface.
 	Run() error
 }
 
