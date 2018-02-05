@@ -71,7 +71,4 @@ type Processor interface {
 	// GetOutEventsChannel must return the channel via which the Processor implementation pushes Event objects. The
 	// channel is read-only and can not be written to.
 	GetOutEventsChannel() <-chan Event
-	// LoadConfig must load a configuration file for the specific Processor implementation. If the configuration file
-	// cannot be loaded, an error must be returned.
-	LoadConfig(path string) error
 }
