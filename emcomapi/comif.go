@@ -56,6 +56,7 @@ type Router interface {
 // the ProcessorOptions implementation must be directly usable as arguments to the NewProcessor implementation.
 // Different ProcessorOptions implementations may not be compatible with the same Processor implementation.
 type ProcessorOptions interface {
+	Logging(writer io.Writer) func(Processor) error
 	Identifier(id string) func(Processor) error
 	Config(cfg string) func(Processor) error
 	Router(rtr Router) func(Processor) error
