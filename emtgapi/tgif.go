@@ -12,6 +12,9 @@ type TelegramResource interface {
 	// This method must call the sendMessage method from the Telegram Bot API. The method must return the response
 	// formatted into a Message object.
 	SendMessage(params TelegramParameters) (Message, error)
+	// This method must return a new TelegramParameters instance which can be used as argument to the other methods of
+	// the TelegramResource type.
+	NewTelegramParameters() TelegramParameters
 }
 
 // The TelegramGateway interface specifies the methods that must be implemented by a complete Telegram receptor and
