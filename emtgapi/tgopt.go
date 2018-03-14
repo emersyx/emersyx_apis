@@ -1,5 +1,9 @@
 package emtgapi
 
+import (
+	"io"
+)
+
 // The TelegramOptions interface specifies the options which can be set on a TelegramGateway implementation. Each method
 // returns a function, which can apply the appropriate configuration to the TelegramGateway implementation. Each
 // TelegramGateway implementation needs to also provide a related TelegramOptions implementation. The return values of
@@ -7,6 +11,7 @@ package emtgapi
 // implementation. Different TelegramOptions implementations may not be compatible with the same TelegramGateway
 // implementation.
 type TelegramOptions interface {
+	Logging(writer io.Writer, level uint) func(TelegramGateway) error
 	Identifier(id string) func(TelegramGateway) error
 	APIToken(token string) func(TelegramGateway) error
 	UpdatesLimit(limit uint) func(TelegramGateway) error

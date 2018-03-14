@@ -17,12 +17,12 @@ func NewRouterOptions(plug *plugin.Plugin) (RouterOptions, error) {
 		return nil, errors.New("the router plugin does not have the NewRouterOptions symbol")
 	}
 
-	fc, ok := f.(func() (RouterOptions, error))
+	fc, ok := f.(func() RouterOptions)
 	if ok == false {
 		return nil, errors.New("the NewRouterOptions function does not have the correct signature")
 	}
 
-	return fc()
+	return fc(), nil
 }
 
 // NewRouter calls the function with the same name exported by the specified plugin and returns the same value returned
