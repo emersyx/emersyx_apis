@@ -23,9 +23,9 @@ type Identifiable interface {
 // Receptor is the interface for all event receptors part of the emersyx platform. Each receptor component must expose
 // a channel via which events are pushed.
 type Receptor interface {
-	// GetEventsChannel must return the channel via which the Receptor implementation pushes Event objects. The channel
-	// is read-only and can not be written to.
-	GetEventsChannel() <-chan Event
+	// GetEventsOutChannel must return the channel via which the Receptor implementation pushes Event objects. The
+	// channel is read-only and can not be written to.
+	GetEventsOutChannel() <-chan Event
 }
 
 // The RouterOptions interface specifies the options which can be set on a Router implementation. Each method returns a
@@ -34,7 +34,8 @@ type Receptor interface {
 // implementation must be directly usable as arguments to the Router.SetOptions implementation. Different RouterOptions
 // implementations may not be compatible with the same Router implementation.
 type RouterOptions interface {
-	Gateways(gws ...Identifiable) func(Router) error
+	Logging(writer io.Writer, level uint) func(Router) error
+	Gateways(gws ...Gateway) func(Router) error
 	Processors(procs ...Processor) func(Router) error
 	Routes(routes map[string][]string) func(Router) error
 }
@@ -68,12 +69,23 @@ type ProcessorOptions interface {
 
 // Processor is the interface for all event processors part of the emersyx platform. Each processor component must
 // implement the Identifiable interface and implement a method via which new Event objects are received for processing.
+// Optionally, specific Processor implementations may choose to also implement the Receptor interface if they generate
+// events of their own. Such Processor implementations will be automatically picked up by the emersyx router component.
 type Processor interface {
 	Identifiable
-	// GetInEventsChannel must return the channel via which the Processor implementation receives Event objects. The
+	// GetEventsInChannel must return the channel via which the Processor implementation receives Event objects. The
 	// channel is write-only and can not be read from.
-	GetInEventsChannel() chan<- Event
-	// GetOutEventsChannel must return the channel via which the Processor implementation pushes Event objects. The
-	// channel is read-only and can not be written to.
-	GetOutEventsChannel() <-chan Event
+	GetEventsInChannel() chan<- Event
+}
+
+// Gateway is the interface for all service gateways part of the emersyx platform. Each gateway component must implement
+// the Identifiable and Receptor interfaces, and a method via which new Event objects are pushed for processing by event
+// processors.
+type Gateway interface {
+	Identifiable
+	Receptor
+	// GetEventsInChannel must return the channel via which the Gateway implementation receives CoreEvent objects.
+	// Gateways are meant to receive events only from the emersyx core. The channel is write-only and can not be read
+	// from.
+	GetEventsInChannel() chan<- CoreEvent
 }
