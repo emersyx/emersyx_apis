@@ -1,5 +1,9 @@
 # emersyx_apis [![Build Status][build-img]][build-url] [![Go Report Card][gorep-img]][gorep-url] [![GoDoc][godoc-img]][godoc-url]
 
+This repository has been archived and is not under development anymore. The relevant code has been merged into the main
+[emersyx repository][emersyx-repo]. This repository now serves for historical purposes only, as it contains the code for
+emersyx version 0.1.
+
 APIs and interface specifications for emersyx modules. The following go modules are present:
 
 * `emcomapi` - common APIs for platform components (e.g. messages, receptors, routers, processors)
@@ -23,6 +27,7 @@ The following websites/services/APIs are on my TODO list to add support for:
 [gorep-url]: https://goreportcard.com/report/github.com/emersyx/emersyx_apis
 [godoc-img]: https://godoc.org/emersyx.net/emersyx_apis?status.svg
 [godoc-url]: https://godoc.org/emersyx.net/emersyx_apis
+[emersyx-repo]: https://github.com/emersyx/emersyx
 [1]: https://www.virustotal.com/en/documentation/public-api/
 [2]: https://developers.virustotal.com/v2.0/reference
 [3]: https://www.reddit.com/dev/api/
